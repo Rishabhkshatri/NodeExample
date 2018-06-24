@@ -1,0 +1,19 @@
+<div id="footer"></div>
+<script type="text/javascript">
+	$(()=>{
+		$('#btn').on('click',()=>{
+			var menuType = $('#btn').attr('data-menu');
+			$.ajax({
+				url : "AjaxContent",
+				type : "POST",
+				data : JSON.stringify({menuType : menuType}),
+				success: (res)=>{
+					$('#btnCont1').html(res);
+				},
+				error: (err)=>{
+					console.log(err);
+				},
+			});
+		});
+	});
+</script>
