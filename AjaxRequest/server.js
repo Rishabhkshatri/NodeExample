@@ -45,6 +45,7 @@ http.createServer((req,res)=>{
 			body+=chunk;
 		}).on('end',()=>{
 		    const data = JSON.parse(body);
+		    console.log(body);
 	        res.writeHead(200,{
 			  'Content-Type': 'text/html'
 			});
