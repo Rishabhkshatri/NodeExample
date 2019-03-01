@@ -1,6 +1,7 @@
 const express = require("express");
 const cookie_parser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
+const url = require("url");
 const app = express();
 // secrete key
 const secrete_key = "Secrete key";
@@ -9,9 +10,10 @@ const site_user = [
 	{user: "abc", password: "123"},
 	{user: "xyz", password: "456"}
 ];
-app.get('/singIn/:user.:password',(req,res)=>{
+app.get('/singIn',(req,res)=>{
 	// get the user credential
-	let user_obj = req.params
+	let url_obj = url.parse(req.url,true);
+	let user_obj = url_obj.query;
 	// check whether the user is valid user or not
 	let is_valid_user = false;
 	for(i in site_user){
